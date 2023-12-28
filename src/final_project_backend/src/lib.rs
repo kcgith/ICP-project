@@ -90,7 +90,7 @@ fn create_proposal(key: u64, proposal: CreateProposal) -> Option<Proposal> {
 #[ic_cdk::update]
 fn edit_proposal(key: u64, proposal: CreateProposal) -> Result<(), VoteError> {
     PROPOSAL_MAP.with(|p| {
-        let old_proposal_opt = p.borrow()get(&key);
+        let old_proposal_opt = p.borrow().get(&key);
         let old_proposal:Proposal;
         match old_proposal_opt{
             Some(value) => old_proposal =value,
@@ -125,7 +125,7 @@ fn edit_proposal(key: u64, proposal: CreateProposal) -> Result<(), VoteError> {
 #[ic_cdk::update]
 fn end_proposal(key: u64) -> Result<(), VoteError> {
     PROPOSAL_MAP.with(|p| {
-        let old_proposal_opt = p.borrow()get(&key);
+        let old_proposal_opt = p.borrow().get(&key);
         let mut old_proposal:Proposal;
         match old_proposal_opt{
             Some(value) => old_proposal =value,
@@ -153,7 +153,7 @@ fn end_proposal(key: u64) -> Result<(), VoteError> {
 #[ic_cdk::update]
 fn vote(key: u64, choice: Choice) -> Result<(), VoteError> {
     PROPOSAL_MAP.with(|p| {
-        let proposal_opt = p.borrow()get(&key);
+        let proposal_opt = p.borrow().get(&key);
         let mut proposal:Proposal;
 
         match old_proposal_opt{
